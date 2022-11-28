@@ -1,10 +1,10 @@
 import sys
 from defines import *
 
-ip = input("Add meg az IP címet: ")
+ip = input("Enter the IP address: ")
 test = ip.split(".")
 if len(test) < 3:
-    sys.exit("Hiba: Az IP cím nem lehet 4 octetnél rövidebb vagy hosszabb!")
+    sys.exit("Error: IP address cannot be shorter or longer than 4 octets!")
 
 bsubnet, bpref, bln = bsubnet_calc()
 
