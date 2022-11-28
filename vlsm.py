@@ -1,13 +1,13 @@
 from defines import *
 
-data = int(input("Hány részre kell osztani a hálózatot? "))
+data = int(input("How many parts should the network be divided into? "))
 if data == "":
-    print_d("Hiba: A részekre osztás nem kihagyható!")
+    print_d("Error: splitting into parts cannot be skipped!")
 
-ip = input("Add meg az IP címet: ")
+ip = input("Enter the IP address: ")
 ips = ip.split(".")
 if ip == "":
-    print_d("Hiba: Az IP Cím nem lehet üres!")
+    print_d("Error: IP Address cannot be empty!")
 
 if ips[0] > "0" and ips[0] <= "127":
     print_d("a")
@@ -20,9 +20,9 @@ prefl = []
 subnetmask = []
 for i in range(data):
 
-    host = int(input("Mennyi host fog kelleni? "))+2
+    host = int(input("How many hosts will you need? "))+2
     if host == "":
-        print_d("Hiba: A hostok száma nem lehet üres!")
+        print_d("Error: the number of hosts cannot be empty!")
 
     hosts = ["2", "4", "8", "16", "32", "64", "128"]
     h = 1
@@ -78,18 +78,18 @@ for i in mnnum:
 if asd < 255:
     for i in mnnum:
         NetID = NetID1+"."+NetID2+"."+NetID3+"."+str(NetID4)
-        print(str(s)+".adat: NetID: "+NetID+"/"+str(prefl[s]))
+        print(str(s)+".data: NetID: "+NetID+"/"+str(prefl[s]))
         print("Subnetmask: "+subnetmask[s])
         NetID = NetID1+"."+NetID2+"."+NetID3+"."+str(int(NetID4)+1)
-        print("Első IP: "+NetID)
+        print("First IP: "+NetID)
         save = NetID4
         NetID4 = int(NetID4)+int(i)
         NetID = NetID1+"."+NetID2+"."+NetID3+"."+str(NetID4-2)
-        print("Utolsó IP: "+NetID)
+        print("Last IP: "+NetID)
         NetID4 = save
         NetID4 = int(NetID4)+int(i)
         NetID = NetID1+"."+NetID2+"."+NetID3+"."+str(NetID4-1)
         print("Broadcast: "+NetID, end="\n\n")
         s += 1
 else:
-    print("Hiba: Nem lépheted át az octet határt. Válassz másik osztálybeli címet!")
+    print("Error: You cannot cross the octet boundary. Choose another class address!")
