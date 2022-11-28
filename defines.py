@@ -37,11 +37,11 @@ base = {
 
 
 def bsubnet_calc():
-    subnet = input("Add meg az alap subnet maskot: ")
+    subnet = input("Enter the default subnet mask: ")
     ln = int()
     if subnet == "":
         #A közös a 1, 9, 17, 25 számokban az n+8
-        pref = input("Add meg az alap subnet mask prefixét: ")
+        pref = input("Enter the prefix of the base subnet mask: ")
         #Ha 1 a prefix akkor 0.0.0.0 lesz mivel nem lép be a ciklusba
         for counter in range(int(pref), 1, -8):
             if counter <= 9 or counter == 9 or counter == 8:
@@ -74,11 +74,11 @@ def bsubnet_calc():
     return subnet, pref, ln
 
 def subnet_calc():
-    subnet = input("Add meg az subnet maskot: ")
+    subnet = input("Enter the subnet mask: ")
     ln = int()
     if subnet == "":
         #A közös a 1, 9, 17, 25 számokban az n+8
-        pref = input("Add meg a subnet mask prefixét: ")
+        pref = input("Enter the prefix of the subnet mask: ")
         if not(pref == "" or int(pref) < 1):
             #Ha 1 a prefix akkor 0.0.0.0 lesz mivel nem lép be a ciklusba
             for counter in range(int(pref), 1, -8):
@@ -92,7 +92,7 @@ def subnet_calc():
                         break
                 subnet = "255."+subnet
         else:
-            print("Hiba: A prefix nem lehet üres vagy kissebb mint 1!")
+            print("Error: the prefix cannot be empty or less than 1!")
     else:
         # Ha üres a subnetmask és van prefix megadva akkor abból számolja ki a subnetmaskot
         test = subnet.split(".")
